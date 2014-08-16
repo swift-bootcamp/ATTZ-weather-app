@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.label.text=name;
+        self.image.image=UIImage(named: "rain.png")
     }
 
     override func didReceiveMemoryWarning() {
