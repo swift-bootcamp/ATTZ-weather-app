@@ -15,6 +15,7 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
     var name:String="Hello World"
     
     @IBOutlet var label:UILabel!
+    @IBOutlet var xxx:UILabel!
     @IBOutlet var image:UIImageView!
     
     override func viewDidLoad() {
@@ -43,6 +44,18 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         
         var json = NSString(data: self.data, encoding : NSUTF8StringEncoding )
         println(json)
+        
+        var error:NSError?
+        let jsonDictionary =  NSJSONSerialization.JSONObjectWithData(self.data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
+        
+        let temp:AnyObject?=jsonDictionary["main"]?["temp"]
+        
+        let weaterTempCelsius=Int(round((temp!.floatValue-273.15)))
+        
+        let weaterTempFahrenheit = Int(round(((temp!.floatValue-273.15)*1.8)+32))
+        
+        self.xxx.text = "\(weaterTempCelsius)"
+        
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
