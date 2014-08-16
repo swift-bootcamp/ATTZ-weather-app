@@ -40,6 +40,9 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
     func connection(connection: NSURLConnection!, didReceiveData dataReceived: NSData!) {
         println("connection");
         self.data.appendData(dataReceived)
+        
+        var json = NSString(data self.data, encoding NSUTF8StringEncoding )
+        println(json)
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
