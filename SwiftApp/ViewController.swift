@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController ,NSURLConnectionDataDelegate{
     
+    var data:NSMutableData = NSMutableData()
+    
     var name:String="Hello World"
     
     @IBOutlet var label:UILabel!
@@ -35,8 +37,9 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
+    func connection(connection: NSURLConnection!, didReceiveData dataReceived: NSData!) {
         println("connection");
+        self.data.appendData(dataReceived)
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
