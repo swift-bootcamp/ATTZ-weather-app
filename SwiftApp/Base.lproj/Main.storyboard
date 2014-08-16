@@ -22,11 +22,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iqG-ot-ZfK">
+                                <rect key="frame" x="97" y="125" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="city" destination="B9y-ru-NQF" id="Gw8-E5-fbF"/>
+                        <outlet property="image" destination="iqG-ot-ZfK" id="CMm-Tp-6Cn"/>
+                        <outlet property="label" destination="B9y-ru-NQF" id="HS3-9U-37f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
