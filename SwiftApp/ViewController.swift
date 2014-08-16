@@ -41,7 +41,7 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         println("connection");
         self.data.appendData(dataReceived)
         
-        var json = NSString(data self.data, encoding NSUTF8StringEncoding )
+        var json = NSString(data: self.data, encoding : NSUTF8StringEncoding )
         println(json)
     }
     
