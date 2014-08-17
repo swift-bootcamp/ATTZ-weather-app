@@ -56,6 +56,9 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         
         self.xxx.text = "\(weaterTempCelsius)"
         
+        let singleFingerTap = UITapGestureRecognizer(target: self, action: "handleSingleTab:")
+        self.view.addGestureRecognizer(singleFingerTap)
+        
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
