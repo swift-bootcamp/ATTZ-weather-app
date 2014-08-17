@@ -69,7 +69,7 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         
 //        self.image.image = UIImage(named: "http://www.openweathermap.org/img/W/\(icon).png")
         
-        self.xxx.text = "\(weaterTempCelsius)"
+        self.xxx.text = "\(weaterTempCelsius)°C"
         
         self.data.setData(nil)
         self.image.image =  UIImage(data: NSData(contentsOfURL: NSURL(string:"http://www.openweathermap.org/img/w/\(icon).png")))
@@ -104,7 +104,7 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         
 //        let filePath = NSBundle.mainBundle().pathForResource("WeatherGirl", ofType: "mp4")
 //        let filePath  = NSURL.fileURLWithPath("WeatherGirl.mp4")
-        let filePath = NSURL(string: "http://r3---sn-u4o-u2xs.googlevideo.com/videoplayback?fexp=902408%2C908547%2C927622%2C931983%2C934024%2C934030%2C938008%2C940698%2C946013%2C951804&sparams=id%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cratebypass%2Csource%2Cupn%2Cexpire&mv=m&upn=PapHXwXBA9o&itag=18&mt=1408257144&ip=49.218.123.2&mm=31&sver=3&expire=1408278789&source=youtube&ratebypass=yes&signature=D8BE1B986F3F06159977344711FD3AB91D727FBA.F3EF8F0D18C82A41125B84953FDC8DD8FA20267B&key=yt5&ms=au&mws=yes&ipbits=0&id=o-AOvKCS_8hl-sYlwsAhZj89RlyoilfLL7Yb8uTEq8SUDG&initcwndbps=1048000&signature=undefined&title=Weather+Girls%E5%A4%A9%E6%B0%A3%E5%A5%B3%E5%AD%A9%E3%80%90%E6%81%8B%E3%81%AE%E5%A4%A9%E6%B0%97%E4%BA%88%E5%A0%B1%E3%80%91+Music+Video")
+        let filePath = NSURL(string: "http://r3---sn-u4o-u2xs.googlevideo.com/videoplayback?fexp=902408%2C908547%2C927622%2C931983%2C934024%2C934030%2C938008%2C940698%2C946013%2C951804&sparams=id%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cratebypass%2Csource%2Cupn%2Cexpire&mv=m&upn=PapHXwXBA9o&itag=22&mt=1408257144&ip=49.218.123.2&mm=31&sver=3&expire=1408278789&source=youtube&ratebypass=yes&signature=10665A9C3C09473ECBA920F933BA6B8338AA7C23.F3C8C1106E37DFEFC281D57C2FB46556638C4D4C&key=yt5&ms=au&mws=yes&ipbits=0&id=o-AOvKCS_8hl-sYlwsAhZj89RlyoilfLL7Yb8uTEq8SUDG&initcwndbps=1048000&signature=undefined&title=Weather+Girls%E5%A4%A9%E6%B0%A3%E5%A5%B3%E5%AD%A9%E3%80%90%E6%81%8B%E3%81%AE%E5%A4%A9%E6%B0%97%E4%BA%88%E5%A0%B1%E3%80%91+Music+Video")
         self.movie.contentURL =  filePath
         self.movie.prepareToPlay()
         self.movie.repeatMode = .One
