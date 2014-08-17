@@ -29,7 +29,7 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         
         let singleFingerTap = UITapGestureRecognizer(target: self, action: "handleSingleTab:")
         self.view.addGestureRecognizer(singleFingerTap)
-        
+         startConnection()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,35 +37,16 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+
     func connection(connection: NSURLConnection!, didReceiveData dataReceived: NSData!) {
-        println("connection");
-        self.data.appendData(dataReceived)
+        println("downloading")
         
-        
-        
+        self.data.setData(dataReceived)
     }
-    
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         println("did");
-    }
-    
-    func handleSingleTab(recognizer: UITapGestureRecognizer){
-        startConnection()
-    }
-    func startConnection(){
-        
-        println("startConnection");
-        var restAPI:String = "http://api.openweathermap.org/data/2.5/weather?q=Taipei"
-        var url :NSURL = NSURL(string:restAPI)
-        var request:NSURLRequest = NSURLRequest(URL:url)
-        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self,startImmediately:true)
-        
-        var json = NSString(data: self.data, encoding : NSUTF8StringEncoding )
-        
-        println(json)
-        
         var error:NSError?
-        let jsonDictionary =  NSJSONSerialization.JSONObjectWithData(self.data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
+        let jsonDictionary = NSJSONSerialization.JSONObjectWithData(self.data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
         
         let temp:AnyObject?=jsonDictionary["main"]?["temp"]
         
@@ -74,8 +55,28 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         let weaterTempFahrenheit = Int(round(((temp!.floatValue-273.15)*1.8)+32))
         
         self.xxx.text = "\(weaterTempCelsius)"
-
+        
         self.data.setData(nil)
+
+        
     }
+    
+    func handleSingleTab(recognizer: UITapGestureRecognizer){
+        startConnection()
+    }
+    func startConnection(){
+        
+        println("startConnection");
+        
+        var restAPI: String = "http://api.openweathermap.org/data/2.5/weather?q=Taipei"
+        var url: NSURL = NSURL(string: restAPI)
+        var request: NSURLRequest = NSURLRequest(URL: url)
+        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: true)
+        
+        var json = NSString(data: self.data, encoding : NSUTF8StringEncoding )
+        
+        println(json)
+        
+        }
 }
 
