@@ -27,10 +27,9 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         let background = UIImage(named: "rainbackground.jpg")
         self.view.backgroundColor = UIColor(patternImage: background)
         
-        var restAPI:String = "http://api.openweathermap.org/data/2.5/weather?q=Taipei"
-        var url :NSURL = NSURL(string:restAPI)
-        var request:NSURLRequest = NSURLRequest(URL:url)
-        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self,startImmediately:true)
+        let singleFingerTap = UITapGestureRecognizer(target: self, action: "handleSingleTab:")
+        self.view.addGestureRecognizer(singleFingerTap)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +41,27 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         println("connection");
         self.data.appendData(dataReceived)
         
+        
+        
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection!) {
+        println("did");
+    }
+    
+    func handleSingleTab(recognizer: UITapGestureRecognizer){
+        startConnection()
+    }
+    func startConnection(){
+        
+        println("startConnection");
+        var restAPI:String = "http://api.openweathermap.org/data/2.5/weather?q=Taipei"
+        var url :NSURL = NSURL(string:restAPI)
+        var request:NSURLRequest = NSURLRequest(URL:url)
+        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self,startImmediately:true)
+        
         var json = NSString(data: self.data, encoding : NSUTF8StringEncoding )
+        
         println(json)
         
         var error:NSError?
@@ -55,15 +74,8 @@ class ViewController: UIViewController ,NSURLConnectionDataDelegate{
         let weaterTempFahrenheit = Int(round(((temp!.floatValue-273.15)*1.8)+32))
         
         self.xxx.text = "\(weaterTempCelsius)"
-        
-        let singleFingerTap = UITapGestureRecognizer(target: self, action: "handleSingleTab:")
-        self.view.addGestureRecognizer(singleFingerTap)
-        
-    }
-    
-    func connectionDidFinishLoading(connection: NSURLConnection!) {
-        println("did");
-    }
 
+        self.data.setData(nil)
+    }
 }
 
